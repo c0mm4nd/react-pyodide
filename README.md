@@ -1,29 +1,29 @@
-# react-py
+# react-pyodide
 
-<!-- [![Build Status](https://img.shields.io/github/workflow/status/elilambnz/react-py/Tests?style=flat-square&label=Tests)](https://github.com/elilambnz/react-py/actions?query=workflow%3ATests+branch%3Amain) -->
+[![Build Status](https://img.shields.io/github/workflow/status/c0mm4nd/react-pyodide/Tests?style=flat-square&label=Tests)](https://github.com/c0mm4nd/react-pyodide/actions?query=workflow%3ATests+branch%3Amain)
 
-[![CodeQL](https://img.shields.io/github/workflow/status/elilambnz/react-py/CodeQL?style=flat-square&label=CodeQL)](https://github.com/elilambnz/react-py/actions?query=workflow%3ACodeQL+branch%3Amain)
-[![MIT License](https://img.shields.io/npm/l/react-py?style=flat-square)](https://github.com/elilambnz/react-py/blob/main/LICENSE.md)
-[![NPM Version](https://img.shields.io/npm/v/react-py?style=flat-square)](https://www.npmjs.com/package/react-py)
-[![NPM Bundle Size](https://img.shields.io/bundlephobia/min/react-py?style=flat-square)](https://bundlephobia.com/package/react-py)
+[![CodeQL](https://img.shields.io/github/workflow/status/c0mm4nd/react-pyodide/CodeQL?style=flat-square&label=CodeQL)](https://github.com/c0mm4nd/react-pyodide/actions?query=workflow%3ACodeQL+branch%3Amain)
+[![MIT License](https://img.shields.io/npm/l/react-pyodide?style=flat-square)](https://github.com/c0mm4nd/react-pyodide/blob/main/LICENSE.md)
+[![NPM Version](https://img.shields.io/npm/v/react-pyodide?style=flat-square)](https://www.npmjs.com/package/react-pyodide)
+[![NPM Bundle Size](https://img.shields.io/bundlephobia/min/react-pyodide?style=flat-square)](https://bundlephobia.com/package/react-pyodide)
 
-Run Python code directly in the browser. [Try it out!](https://elilambnz.github.io/react-py)
+Run Python code directly in the browser. [Try it out!](https://react-pyodide.c0mm4nd.com/)
 
 ## Examples
 
-[Basic example](https://elilambnz.github.io/react-py)
+[Basic example](https://react-pyodide.c0mm4nd.com/)
 
 ## Installation
 
 ```
-npm install react-py
+npm install react-pyodide
 ```
 
 ## Usage
 
 ```tsx
 import { useState } from "react";
-import { usePython, PythonProvider } from "react-py";
+import { usePython, PythonProvider } from "react-pyodide";
 
 function App() {
   return (
@@ -87,12 +87,11 @@ Most of the Python standard library is functional, except from some modules. The
 
 ## License
 
-_react-py_ is available under the MIT License.
+_react-pyodide_ is available under the MIT License.
 
 ## Contact
 
-Eli Lamb - [elilambnz](https://github.com/elilambnz)  
-James Ansley - [James-Ansley](https://github.com/James-Ansley)
+Command M - [c0mm4nd](https://github.com/c0mm4nd)
 
 ## Acknowlegments
 

@@ -1,2 +1,15 @@
+# IDE
+.idea/
+.vscode/
+
+# dist
 dist/
+
+# dependencies
 node_modules/
+
+# package manager
+.yarn/
+
+# temporarily prohibit docusarus website
+website/

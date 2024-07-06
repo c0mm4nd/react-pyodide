@@ -1,4 +1,4 @@
-import { PythonProvider } from "./PythonProvider";
-import usePython from "./usePython";
+import usePyodide from "./hooks/usePyodide";
+import { PyodideProvider } from "./providers/PyodideProvider";
 
-export { PythonProvider, usePython };
+export { usePyodide, PyodideProvider };
