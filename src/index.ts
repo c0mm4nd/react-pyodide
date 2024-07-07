@@ -1,4 +1,4 @@
 import usePyodide from "./hooks/usePyodide";
-import { PyodideProvider } from "./providers/PyodideProvider";
+import { PyodideContext, PyodideProvider } from "./providers/PyodideProvider";
 
-export { usePyodide, PyodideProvider };
+export { usePyodide, PyodideProvider, PyodideContext };
