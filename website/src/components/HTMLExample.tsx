@@ -43,17 +43,11 @@ export default function MatplotlibExample(props: MatplotlibExampleProps) {
     stderr,
     isLoading,
     isRunning,
-    interruptExecution
   } = usePyodide({ packages })
 
   function run() {
     runPython(input)
     setShowOutput(true)
-  }
-
-  function stop() {
-    interruptExecution()
-    setShowOutput(false)
   }
 
   function reset() {

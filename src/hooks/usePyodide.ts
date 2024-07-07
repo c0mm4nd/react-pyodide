@@ -24,7 +24,6 @@ interface UsePyodideReturn {
   stdout: string;
   stderr: string;
 
-  interruptExecution: ()=>void,
   sendInput: (value: string)=>void,
   prompt: string,
 
@@ -94,7 +93,6 @@ function usePyodide(props: UsePyodideProps): UsePyodideReturn {
     stdout: stdoutStore[runnerId]?.join("\n") || "",
     stderr: stderrStore[runnerId]?.join("\n") || "",
 
-    interruptExecution: ()=> alert("Not implemented"),
     sendInput: ()=> alert("Not implemented"),
     prompt: "",
 

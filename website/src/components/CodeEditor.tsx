@@ -44,7 +44,6 @@ export default function CodeEditor(props: CodeEditorProps) {
     stderr,
     isLoading,
     isRunning,
-    interruptExecution,
     isAwaitingInput,
     sendInput,
     prompt
@@ -53,11 +52,6 @@ export default function CodeEditor(props: CodeEditorProps) {
   function run() {
     runPython(input)
     setShowOutput(true)
-  }
-
-  function stop() {
-    interruptExecution()
-    setShowOutput(false)
   }
 
   function reset() {

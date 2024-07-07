@@ -45,18 +45,12 @@ export default function GlobalsExample(props: GlobalsProps) {
     stderr,
     isLoading,
     isRunning,
-    interruptExecution,
     globals
   } = usePyodide({ packages })
 
   function run() {
     runPython(input)
     setShowOutput(true)
-  }
-
-  function stop() {
-    interruptExecution()
-    setShowOutput(false)
   }
 
   function reset() {
