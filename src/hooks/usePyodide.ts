@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { PyodideContext } from "../providers/PyodideProvider";
+import type { PythonError } from "pyodide/ffi";
 import { v4 as uuidv4 } from "uuid";
 
 interface UsePyodideProps {
@@ -7,9 +8,15 @@ interface UsePyodideProps {
 }
 
 interface UsePyodideReturn {
-  runPython: (code: string) => Promise<any>;
+  runPython: (code: string) => Promise<any>; // eslint-disable-line
+  
+  runnerId: string;
+  setRunnerId: (runnerId: string) => void;
+  newRunnerId: () => void;
+  
   packages: string[];
   setPackages: (packages: string[]) => void;
+
   isLoading: boolean;
   isRunning: boolean;
 
@@ -18,12 +25,11 @@ interface UsePyodideReturn {
 }
 
 function usePyodide(props: UsePyodideProps): UsePyodideReturn {
-  // const [runnerId, setRunnerId] = useState<string>()
   const [runnerId, setRunnerId] = useState<string>(uuidv4());
   const [isRunning, setIsRunning] = useState(false);
   const [packages, setPackages] = useState<string[]>(props.packages);
 
-  const { pyodide, isLoading, stdoutStore, stderrStore, run, output } =
+  const { pyodide, isLoading, stdoutStore, stderrStore, run } =
     useContext(PyodideContext);
 
   useEffect(() => {
@@ -49,21 +55,34 @@ function usePyodide(props: UsePyodideProps): UsePyodideReturn {
     try {
       setIsRunning(true);
       result = await run(runnerId, code);
-    } catch (error: any) {
+    } catch (e: unknown) {
+      const error = e as PythonError;
       console.error(error.message);
     } finally {
       setIsRunning(false);
-      return result;
     }
+
+    return result;
+  };
+
+  const newRunnerId = () => {
+    setRunnerId(uuidv4());
   };
 
   return {
     // pyodide, Return type of exported function has or is using name 'CanvasInterface' from external module "./node_modules/pyodide/pyodide" but cannot be named.
     runPython,
+
+    runnerId,
+    setRunnerId,
+    newRunnerId,
+
     packages,
     setPackages,
+    
     isLoading,
     isRunning,
+    
     stdout: stdoutStore[runnerId]?.join("\n") || "",
     stderr: stderrStore[runnerId]?.join("\n") || "",
   };

@@ -1,11 +1,4 @@
-import {
-  createContext,
-  MutableRefObject,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 import type { loadPyodide, PyodideInterface } from "pyodide";
 
 declare global {
@@ -18,28 +11,18 @@ interface PyodideContextType {
   isLoading: boolean;
   pyodide?: PyodideInterface | null;
 
-  run: (runnerId: string, code: string) => Promise<any>;
-  stdoutStore: { [key: string]: string[] };
-  stderrStore: { [key: string]: string[] };
-
-  output: string[];
-
-  // activeRunner: string | null;
-  // setActiveRunner: (runner: string) => void;
+  run: (runnerId: string, code: string) => Promise<any>; // eslint-disable-line
+  stdoutStore: Record<string, string[]>;
+  stderrStore: Record<string, string[]>;
 }
 
 const PyodideContext = createContext<PyodideContextType>({
   isLoading: false,
 
-  run: async () => {},
+  run: async () => null,
 
   stdoutStore: {},
   stderrStore: {},
-
-  output: [],
-
-  // activeRunner: null,
-  // setActiveRunner: () => {},
 });
 
 interface PyodideProviderProps {
@@ -124,9 +107,7 @@ interface PyodideProviderProps {
    * If ``env.HOME`` is undefined, it will be set to a default value of
    * ``"/home/pyodide"``
    */
-  env?: {
-    [key: string]: string;
-  };
+  env?: Record<string, string>;
   /**
    * A list of packages to load as Pyodide is initializing.
    *
@@ -169,14 +150,13 @@ function PyodideProvider(props: PyodideProviderProps) {
   const [pyodide, setPyodide] = useState<PyodideInterface | null>(null);
 
   const activeRunner = useRef<string | null>(null);
-  const [output, setOutput] = useState<string[]>([]);
 
   // const [stdinManager, setStdinManager] = useState<() => string>(() => "");
 
-  const [stdoutStore, setStdoutStore] = useState<{ [key: string]: string[] }>(
+  const [stdoutStore, setStdoutStore] = useState<Record<string, string[]>>(
     {}
   );
-  const [stderrStore, setStderrStore] = useState<{ [key: string]: string[] }>(
+  const [stderrStore, setStderrStore] = useState<Record<string, string[]>>(
     {}
   );
 
@@ -305,7 +285,6 @@ function PyodideProvider(props: PyodideProviderProps) {
         pyodide,
         run,
 
-        output,
         stdoutStore,
         stderrStore,
       }}
