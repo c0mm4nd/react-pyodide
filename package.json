@@ -16,7 +16,6 @@
     "release": "standard-version",
     "publish": "git push --follow-tags origin main && npm publish"
   },
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/c0mm4nd/react-pyodide.git"
