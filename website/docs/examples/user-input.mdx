@@ -1,0 +1,21 @@
+---
+sidebar_position: 8
+---
+
+# User Input
+
+A patch for `stdin` has been provided to allow for user input. This is done by using a service worker to intercept `fetch` requests from the web worker instances.
+
+:::caution
+This is a recently added feature and may not work as expected. If you encounter any issues, please [create an issue](https://github.com/elilambnz/react-py/issues/new?labels=bug).
+:::
+
+```python
+num1 = int(input("Enter first number "))
+num2 = int(input("Enter second number "))
+
+result = num1 + num2
+print(f"The sum of {num1} and {num2} is: {result}")
+```
+
+You can find the source code for this example [here](https://github.com/elilambnz/react-py/blob/main/website/src/components/Input.tsx).
