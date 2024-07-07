@@ -25,9 +25,8 @@ jobs:
           cd website
           npm run build
       - name: Upload website artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: github-pages
           path: website/build
   deploy:
     runs-on: ubuntu-latest
