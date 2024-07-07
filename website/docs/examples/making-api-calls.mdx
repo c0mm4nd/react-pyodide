@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-import CodeEditor from '../../src/components/CodeEditor'
+import CodeEditor from "../../src/components/CodeEditor";
 
 # Making API Calls
 
@@ -14,14 +14,14 @@ See [Using Packages](using-packages) for package installation instructions, for 
 
 ```js
 {
-  micropip: ['requests']
+  micropip: ["requests"];
 }
 ```
 
 Try it out:
 
 export const exampleCode = `import requests
-response = requests.get('https://api.github.com/repos/elilambnz/react-py')
+response = requests.get('https://api.github.com/repos/c0mm4nd/react-pyodide')
 data = response.json()\n
 print("*" * 50)
 print(f"Repository: {data['full_name']}")
@@ -30,9 +30,9 @@ print(f"Number of stars: {data['stargazers_count']} ⭐️")
 print(f"Number of forks: {data['forks_count']} 🍴")
 print(f"Number of watchers: {data['watchers_count']} 👀")
 print("*" * 50)
-`
+`;
 
-<CodeEditor code={exampleCode} packages={{ micropip: ['requests'] }} />
+<CodeEditor code={exampleCode} packages={["requests"]} />
 
 ## `GET`
 
@@ -40,9 +40,9 @@ export const exampleGetCode = `import requests
 response = requests.get('https://reqres.in/api/users/2')
 data = response.json()\n
 print(data)
-`
+`;
 
-<CodeEditor code={exampleGetCode} packages={{ micropip: ['requests'] }} />
+<CodeEditor code={exampleGetCode} packages={["requests"]} />
 
 ## `POST`
 
@@ -50,9 +50,9 @@ export const examplePostCode = `import requests
 response = requests.post('https://reqres.in/api/users', { "name": "morpheus", "job": "leader" })
 data = response.json()\n
 print(data)
-`
+`;
 
-<CodeEditor code={examplePostCode} packages={{ micropip: ['requests'] }} />
+<CodeEditor code={examplePostCode} packages={["requests"]} />
 
 ## `PUT`
 
@@ -60,9 +60,9 @@ export const examplePutCode = `import requests
 response = requests.put('https://reqres.in/api/users/2', { "name": "morpheus", "job": "zion resident" })
 data = response.json()\n
 print(data)
-`
+`;
 
-<CodeEditor code={examplePutCode} packages={{ micropip: ['requests'] }} />
+<CodeEditor code={examplePutCode} packages={["requests"]} />
 
 ## `DELETE`
 
@@ -70,6 +70,6 @@ export const exampleDeleteCode = `import requests
 response = requests.delete('https://reqres.in/api/users/2')\n
 if response.status_code == 204:
   print ('Success')
-`
+`;
 
-<CodeEditor code={exampleDeleteCode} packages={{ micropip: ['requests'] }} />
+<CodeEditor code={exampleDeleteCode} packages={["requests"]} />

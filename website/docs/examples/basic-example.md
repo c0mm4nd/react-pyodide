@@ -19,4 +19,4 @@ shuffle(data)
 print(data)
 ```
 
-You can find the source code for this example [here](https://github.com/elilambnz/react-py/blob/main/website/src/components/CodeEditor.tsx).
+You can find the source code for this example [here](https://github.com/c0mm4nd/react-pyodide/blob/main/website/src/components/CodeEditor.tsx).

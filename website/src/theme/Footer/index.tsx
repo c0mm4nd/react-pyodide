@@ -20,14 +20,14 @@ const navigation = {
   ],
   links: [
     { name: 'NPM', href: 'https://www.npmjs.com/package/react-py' },
-    { name: 'GitHub', href: 'https://github.com/elilambnz/react-py' },
+    { name: 'GitHub', href: 'https://github.com/c0mm4nd/react-pyodide' },
     {
       name: 'License',
-      href: 'https://github.com/elilambnz/react-py/blob/main/LICENSE.md'
+      href: 'https://github.com/c0mm4nd/react-pyodide/blob/main/LICENSE.md'
     },
     {
       name: 'Contributing',
-      href: 'https://github.com/elilambnz/react-py/blob/main/CONTRIBUTING.md'
+      href: 'https://github.com/c0mm4nd/react-pyodide/blob/main/CONTRIBUTING.md'
     }
   ],
   tryExamples: [
@@ -77,7 +77,7 @@ export default function Example() {
             </p>
             <div className="flex space-x-2">
               <a
-                href="https://github.com/elilambnz/react-py"
+                href="https://github.com/c0mm4nd/react-pyodide"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center rounded border border-transparent bg-gray-200 px-2.5 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-300 hover:text-gray-700 hover:no-underline dark:bg-gray-100 dark:hover:bg-gray-200"
@@ -201,7 +201,7 @@ export default function Example() {
           <p className="leading-5 text-gray-500">
             Built by <a href="https://github.com/elilambnz">Eli Lamb</a>.
             Licensed under the{' '}
-            <a href="https://github.com/elilambnz/react-py/blob/main/LICENSE.md">
+            <a href="https://github.com/c0mm4nd/react-pyodide/blob/main/LICENSE.md">
               MIT License
             </a>
             .

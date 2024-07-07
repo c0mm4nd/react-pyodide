@@ -1,59 +1,60 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 
-import BrowserOnly from '@docusaurus/BrowserOnly'
-import { useColorMode } from '@docusaurus/theme-common'
-import { usePyodide } from '@site/..'
+import BrowserOnly from "@docusaurus/BrowserOnly";
+import { useColorMode } from "@docusaurus/theme-common";
+import { usePyodide } from "@site/..";
 
-import Controls from './Controls'
-import Loader from './Loader'
-import { ArrowPathIcon, PlayIcon, StopIcon } from '@heroicons/react/24/solid'
+import Controls from "./Controls";
+import Loader from "./Loader";
+import { ArrowPathIcon, PlayIcon, StopIcon } from "@heroicons/react/24/solid";
 
 const editorOptions = {
   enableBasicAutocompletion: true,
   enableLiveAutocompletion: true,
   highlightActiveLine: false,
-  showPrintMargin: false
-}
+  showPrintMargin: false,
+};
 
 const editorOnLoad = (editor) => {
-  editor.renderer.setScrollMargin(10, 10, 0, 0)
-  editor.moveCursorTo(0, 0)
-}
+  editor.renderer.setScrollMargin(10, 10, 0, 0);
+  editor.moveCursorTo(0, 0);
+};
 
 interface MatplotlibExampleProps {
-  code: string
-  packages?: string[]
+  code: string;
+  packages?: string[];
 }
 
 export default function MatplotlibExample(props: MatplotlibExampleProps) {
-  const { code, packages } = props
-  const [input, setInput] = useState(code.trimEnd())
-  const [showOutput, setShowOutput] = useState(false)
+  const { code, packages } = props;
+  const [input, setInput] = useState(code.trimEnd());
+  const [showOutput, setShowOutput] = useState(false);
 
   useEffect(() => {
-    setInput(code.trimEnd())
-    setShowOutput(false)
-  }, [code])
+    setInput(code.trimEnd());
+    setShowOutput(false);
+  }, [code]);
 
-  const { colorMode } = useColorMode()
+  const { colorMode } = useColorMode();
 
-  const {
-    runPython,
-    stdout,
-    stderr,
-    isLoading,
-    isRunning,
-  } = usePyodide({ packages })
+  const { runPython, stdout, stderr, isLoading, isRunning } = usePyodide({
+    packages,
+  });
 
   function run() {
-    runPython(input)
-    setShowOutput(true)
+    runPython(input);
+    setShowOutput(true);
   }
 
   function reset() {
-    setShowOutput(false)
-    setInput(code.trimEnd())
+    setShowOutput(false);
+    setInput(code.trimEnd());
   }
+
+  useEffect(() => {
+    if (!isLoading)
+      (document as any).pyodideMplTarget = document.getElementById("target");
+  }, [isLoading]);
 
   return (
     <div>
@@ -61,18 +62,18 @@ export default function MatplotlibExample(props: MatplotlibExampleProps) {
         <Controls
           items={[
             {
-              label: 'Run',
+              label: "Run",
               icon: PlayIcon,
               onClick: run,
               disabled: isLoading || isRunning,
-              hidden: isRunning
+              hidden: isRunning,
             },
             {
-              label: 'Reset',
+              label: "Reset",
               icon: ArrowPathIcon,
               onClick: reset,
-              disabled: isRunning
-            }
+              disabled: isRunning,
+            },
           ]}
         />
 
@@ -80,11 +81,11 @@ export default function MatplotlibExample(props: MatplotlibExampleProps) {
 
         <BrowserOnly fallback={<div>Loading...</div>}>
           {() => {
-            const AceEditor = require('react-ace').default
-            require('ace-builds/src-noconflict/mode-python')
-            require('ace-builds/src-noconflict/theme-textmate')
-            require('ace-builds/src-noconflict/theme-idle_fingers')
-            require('ace-builds/src-noconflict/ext-language_tools')
+            const AceEditor = require("react-ace").default;
+            require("ace-builds/src-noconflict/mode-python");
+            require("ace-builds/src-noconflict/theme-textmate");
+            require("ace-builds/src-noconflict/theme-idle_fingers");
+            require("ace-builds/src-noconflict/ext-language_tools");
             return (
               <AceEditor
                 value={input}
@@ -92,7 +93,7 @@ export default function MatplotlibExample(props: MatplotlibExampleProps) {
                 name="CodeBlock"
                 fontSize="0.9rem"
                 className="min-h-[4rem] overflow-clip rounded shadow-md"
-                theme={colorMode === 'dark' ? 'idle_fingers' : 'textmate'}
+                theme={colorMode === "dark" ? "idle_fingers" : "textmate"}
                 onChange={(newValue) => setInput(newValue)}
                 width="100%"
                 maxLines={Infinity}
@@ -100,26 +101,21 @@ export default function MatplotlibExample(props: MatplotlibExampleProps) {
                 editorProps={{ $blockScrolling: true }}
                 setOptions={editorOptions}
               />
-            )
+            );
           }}
         </BrowserOnly>
       </div>
       <div>
         <h2>Result</h2>
         {!stderr ? (
-          stdout && stdout.startsWith('data:image/png;base64,') ? (
-            <img src={stdout} />
-          ) : (
-            <p className="text-sm text-gray-500">
-              No image yet. Click run to see the result.
-            </p>
-          )
+          stdout
         ) : (
           <pre className="mt-4 text-left">
             <code className="text-red-500">{stderr}</code>
           </pre>
         )}
+        <div id="target"></div>
       </div>
     </div>
-  )
+  );
 }

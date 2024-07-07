@@ -40,14 +40,18 @@ function usePyodide(props: UsePyodideProps): UsePyodideReturn {
 
   useEffect(() => {
     const loadPackage = async (packages: string[]) => {
-      if (pyodide && packages) {
-        await pyodide.loadPackage(packages);
-        console.log("Packages loaded");
+      if (!isLoading && packages) {
+        const micropip = pyodide?.pyimport("micropip");
+        for (const pkg of packages) {
+          console.log(`Installing ${pkg}`);
+          await micropip.install(pkg);
+          console.log(`Installed ${pkg}`);
+        }
       }
     };
 
     loadPackage(packages);
-  }, [pyodide, packages]);
+  }, [isLoading, packages]);
 
   const runPython = async (code: string) => {
     // Clear stdout and stderr

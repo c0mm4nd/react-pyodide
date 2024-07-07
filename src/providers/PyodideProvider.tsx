@@ -158,12 +158,8 @@ function PyodideProvider(props: PyodideProviderProps) {
 
   // const [stdinManager, setStdinManager] = useState<() => string>(() => "");
 
-  const [stdoutStore, setStdoutStore] = useState<Record<string, string[]>>(
-    {}
-  );
-  const [stderrStore, setStderrStore] = useState<Record<string, string[]>>(
-    {}
-  );
+  const [stdoutStore, setStdoutStore] = useState<Record<string, string[]>>({});
+  const [stderrStore, setStderrStore] = useState<Record<string, string[]>>({});
 
   useEffect(() => {
     if (window.loadPyodide) {
@@ -230,8 +226,6 @@ function PyodideProvider(props: PyodideProviderProps) {
           // NOTE: If error is "Error: Pyodide is already loading.", this is likely due to React running in Strict Mode.
           // Strict Mode renders components twice (on dev but not production) in order to detect any problems with your code and warn you about them.
           console.error("Error loading Pyodide:", error);
-        } finally {
-          setIsLoading(false);
         }
       };
       init();
@@ -239,23 +233,25 @@ function PyodideProvider(props: PyodideProviderProps) {
   }, [hasScript, pyodide, props]);
 
   useEffect(() => {
-    const initPackages = async () => {
-      //       if (pyodide && "pyodide-http" in pyodide?.current?.loadedPackages) {
-      //         await pyodide.runPythonAsync(`
-      // import pyodide_http
-      // pyodide_http.patch_all()
-      //         `);
-      //       }
+    const postInit = async () => {
+      // load necessary packages
+      if (pyodide) {
+        await pyodide.loadPackage(["micropip"]);
+        await pyodide.loadPackage(["pyodide-http"]);
+
+        // patch all
+        //       pyodide &&
+        //         (await pyodide.runPythonAsync(`
+        // import pyodide_http
+        // pyodide_http.patch_all()
+        //               `));
+
+        console.info("Loaded pyodide version:", pyodide.version);
+        setIsLoading(false);
+      }
     };
 
-    initPackages();
-  }, [pyodide]);
-
-  useEffect(() => {
-    if (pyodide) {
-      console.info("Loaded pyodide version:", pyodide.version);
-      setIsLoading(false);
-    }
+    postInit();
   }, [pyodide]);
 
   const run = async (runnerId: string, code: string) => {

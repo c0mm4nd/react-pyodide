@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-import CodeEditor from '../../src/components/CodeEditor'
+import CodeEditor from "../../src/components/CodeEditor";
 
 # Using Packages
 
@@ -85,12 +85,9 @@ tree = {
 }\n
 tr = LeftAligned()
 print(tr(tree))
-`
+`;
 
-<CodeEditor
-  code={officialPackagesCode}
-  packages={{ official: ['asciitree'] }}
-/>
+<CodeEditor code={officialPackagesCode} packages={["asciitree"]} />
 
 ## Installing packages with micropip
 
@@ -105,9 +102,6 @@ the family nothing but leftovers.  The original meal has never been found.
 		-- Calvin Trillin
 """.strip()
 print(cowsay(message))
-`
+`;
 
-<CodeEditor
-  code={micropipPackagesCode}
-  packages={{ micropip: ['python-cowsay'] }}
-/>
+<CodeEditor code={micropipPackagesCode} packages={["python-cowsay"]} />
