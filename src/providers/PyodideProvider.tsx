@@ -142,6 +142,11 @@ interface PyodideProviderProps {
     | Uint8Array
     | ArrayBuffer
     | PromiseLike<Uint8Array | ArrayBuffer>;
+
+  /**
+   * The children components to render.
+   */
+  children: React.ReactNode;
 }
 
 function PyodideProvider(props: PyodideProviderProps) {

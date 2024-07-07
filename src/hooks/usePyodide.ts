@@ -19,9 +19,16 @@ interface UsePyodideReturn {
 
   isLoading: boolean;
   isRunning: boolean;
+  isAwaitingInput: boolean,
 
   stdout: string;
   stderr: string;
+
+  interruptExecution: ()=>void,
+  sendInput: (value: string)=>void,
+  prompt: string,
+
+  globals: Record<string, any>; // eslint-disable-line
 }
 
 function usePyodide(props: UsePyodideProps): UsePyodideReturn {
@@ -82,9 +89,16 @@ function usePyodide(props: UsePyodideProps): UsePyodideReturn {
     
     isLoading,
     isRunning,
+    isAwaitingInput: false,
     
     stdout: stdoutStore[runnerId]?.join("\n") || "",
     stderr: stderrStore[runnerId]?.join("\n") || "",
+
+    interruptExecution: ()=> alert("Not implemented"),
+    sendInput: ()=> alert("Not implemented"),
+    prompt: "",
+
+    globals: pyodide?.globals || {},
   };
 }
 
