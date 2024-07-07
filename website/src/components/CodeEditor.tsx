@@ -70,7 +70,6 @@ export default function CodeEditor(props: CodeEditorProps) {
             disabled: isLoading || isRunning,
             hidden: isRunning
           },
-          { label: 'Stop', icon: StopIcon, onClick: stop, hidden: !isRunning },
           {
             label: 'Reset',
             icon: ArrowPathIcon,

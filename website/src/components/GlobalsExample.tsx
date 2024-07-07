@@ -81,12 +81,6 @@ export default function GlobalsExample(props: GlobalsProps) {
               hidden: isRunning
             },
             {
-              label: 'Stop',
-              icon: StopIcon,
-              onClick: stop,
-              hidden: !isRunning
-            },
-            {
               label: 'Reset',
               icon: ArrowPathIcon,
               onClick: reset,

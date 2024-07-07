@@ -68,12 +68,6 @@ export default function MatplotlibExample(props: MatplotlibExampleProps) {
               hidden: isRunning
             },
             {
-              label: 'Stop',
-              icon: StopIcon,
-              onClick: stop,
-              hidden: !isRunning
-            },
-            {
               label: 'Reset',
               icon: ArrowPathIcon,
               onClick: reset,
