@@ -1,11 +1,8 @@
 # react-pyodide
 
-[![Build Status](https://img.shields.io/github/workflow/status/c0mm4nd/react-pyodide/Tests?style=flat-square&label=Tests)](https://github.com/c0mm4nd/react-pyodide/actions?query=workflow%3ATests+branch%3Amain)
-
-[![CodeQL](https://img.shields.io/github/workflow/status/c0mm4nd/react-pyodide/CodeQL?style=flat-square&label=CodeQL)](https://github.com/c0mm4nd/react-pyodide/actions?query=workflow%3ACodeQL+branch%3Amain)
 [![MIT License](https://img.shields.io/npm/l/react-pyodide?style=flat-square)](https://github.com/c0mm4nd/react-pyodide/blob/main/LICENSE.md)
 [![NPM Version](https://img.shields.io/npm/v/react-pyodide?style=flat-square)](https://www.npmjs.com/package/react-pyodide)
-[![NPM Bundle Size](https://img.shields.io/bundlephobia/min/react-pyodide?style=flat-square)](https://bundlephobia.com/package/react-pyodide)
+[![NPM Bundle Size](https://img.shields.io/bundlephobia/min/@c0mm4nd/react-pyodide?style=flat-square)](https://bundlephobia.com/package/@c0mm4nd/react-pyodide)
 
 Run Python code directly in the browser. [Try it out!](https://react-pyodide.c0mm4nd.com/)
 
@@ -16,14 +13,14 @@ Run Python code directly in the browser. [Try it out!](https://react-pyodide.c0m
 ## Installation
 
 ```
-npm install react-pyodide
+npm install @c0mm4nd/react-pyodide
 ```
 
 ## Usage
 
 ```tsx
 import { useState } from "react";
-import { usePython, PythonProvider } from "react-pyodide";
+import { usePython, PythonProvider } from "@c0mm4nd/react-pyodide";
 
 function App() {
   return (
