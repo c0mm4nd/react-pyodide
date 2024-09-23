@@ -36,7 +36,7 @@
   "homepage": "https://github.com/c0mm4nd/react-pyodide#readme",
   "packageManager": "npm@8.3.0",
   "devDependencies": {
-    "@eslint/js": "^9.6.0",
+    "@eslint/js": "^9.11.0",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^20.14.9",
     "@types/react": "^18.2.19",
